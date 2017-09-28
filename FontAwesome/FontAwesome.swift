@@ -146,8 +146,8 @@ private class FontLoader {
         guard let data = try? Data(contentsOf: fontURL) else { return }
 
         let provider = CGDataProvider(data: data as CFData)
-        var font: CGFont = CGFont(provider!)
-        
+        var font: CGFont = CGFont(provider!)!
+
         var error: Unmanaged<CFError>?
         if !CTFontManagerRegisterGraphicsFont(font, &error) {
             let errorDescription: CFString = CFErrorCopyDescription(error!.takeUnretainedValue())
